@@ -61,3 +61,11 @@ Gestion des erreurs en cas d’échec de la récupération des données.
 
 
 
+
+
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/bennoomenfaker/jamaity.org.git
+git remote remove origin
+git push -u origin master  
