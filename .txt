@@ -1,0 +1,63 @@
+ python -m venv venv  
+venv\Scripts\activate
+
+mkdir my_project
+cd my_project
+New-Item -Type File main.py
+New-Item -Type File requirements.txt
+mkdir app
+New-Item -Type File app\__init__.py
+mkdir app\routes
+New-Item -Type File app\routes\__init__.py
+New-Item -Type File app\routes\jobs.py
+New-Item -Type File app\routes\reports.py
+
+pip install -r requirements.txt
+
+pip install fastapi uvicorn
+
+/mon_projet_fastapi
+│── /venv                 # Environnement virtuel (ne pas toucher)
+│── /app                  # Dossier principal de l'application
+│   ├── __init__.py       # Fichier pour indiquer que c'est un module Python
+│   ├── main.py           # Point d'entrée de l'application
+│   ├── routes            # Dossier contenant les controllers (endpoints)
+│   │   ├── __init__.py   
+│   │   ├── jobs.py       # JobsController
+│   │   ├── reports.py    # ReportsController
+│   ├── models            # Dossier pour les modèles de données (Pydantic/SQLAlchemy)
+│   ├── services          # Dossier pour la logique métier
+│   ├── database.py       # Configuration de la base de données
+│── requirements.txt      # Liste des dépendances
+
+
+tester:
+uvicorn app.main:app --reload
+
+pip install -r requirements.txt
+
+pip install httpx
+pip install requests
+
+
+
+http://127.0.0.1:8000/jobs
+http://127.0.0.1:8000/jobs/3857925  by id
+http://127.0.0.1:8000/reports/3857925  by id
+http://127.0.0.1:8000/reports
+
+http://127.0.0.1:8000/docs
+
+
+ https://api.reliefweb.int/v1/swagger/api   -->docs de reliefweb
+
+
+
+ Fonctionnalités :
+Endpoint /reports → Récupère la liste des derniers rapports.
+Endpoint /reports/{report_id} → Récupère les détails d’un rapport spécifique.
+Utilisation d'httpx pour effectuer les requêtes asynchrones vers l’API externe.
+Gestion des erreurs en cas d’échec de la récupération des données.
+
+
+
